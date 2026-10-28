@@ -47,7 +47,7 @@ r2 = Record("two")
 registry["one"] = r1
 registry["two"] = r2
 
-tmp = Record ("three")
+tmp = Record("three")
 
 registry["three"] = tmp
 
@@ -56,7 +56,7 @@ print("До удаления tmp:")
 print("- ключи реестра:", list(registry.keys()))
 print("- содержимое:", list(registry.items()))
 
-del registry["three"]
+del tmp
 
 print("\nПосле удаления tmp:")
 print("ключи реестра:", list(registry.keys()))

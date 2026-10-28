@@ -10,6 +10,7 @@ print(a, b)
 print(id(a), id(b))
 
 # Эксперимент B
+print("------------------")
 first = [10, 20]
 second = first
 
@@ -29,9 +30,9 @@ second[0] = 20
 print(first, second)
 
 #Практическая задача
+print("------------------")
 import copy
 
-# Исходная конфигурация учебного проекта
 config1 = {
     "name": "Эксперимент A",
     "participants": ["Алиса", "Боб"],
@@ -44,10 +45,8 @@ config1 = {
 print("Исходная config1:")
 print(config1)
 
-# 1. Получаем вторую конфигурацию простым присваиванием
 config2 = config1
 
-# Изменяем вложенный список параметров запуска и список участников
 config2["participants"].append("Карл")
 config2["launch_params"][0]["epochs"] = 999
 
@@ -55,13 +54,10 @@ print("\nПосле изменения config2 простым присваива
 print("config1:", config1)
 print("config2:", config2)
 
-# Показываем нежелательное совместное изменение:
-# config2 и config1 ссылаются на один и тот же объект
 assert config1["launch_params"][0]["epochs"] == 999
 assert "Карл" in config1["participants"]
 print("\nНежелательное совместное изменение подтверждено: config1 и config2 — один объект.")
 
-# Для дальнейшего примера сбросим config1 в исходное состояние
 config1 = {
     "name": "Эксперимент A",
     "participants": ["Алиса", "Боб"],
@@ -71,10 +67,8 @@ config1 = {
     ]
 }
 
-# 2. Создаём действительно независимую конфигурацию через copy.deepcopy
 config3 = copy.deepcopy(config1)
 
-# Меняем config3: название, участников и вложенные параметры запуска
 config3["name"] = "Эксперимент B"
 config3["participants"].append("Дина")
 config3["launch_params"][0]["epochs"] = 50
@@ -84,7 +78,6 @@ print("\nПосле изменения независимой config3:")
 print("config1:", config1)
 print("config3:", config3)
 
-# Подтверждаем независимость с помощью assert
 assert config3 is not config1
 
 assert config3["participants"] is not config1["participants"]
